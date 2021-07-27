@@ -49,9 +49,15 @@ export default function App() {
     });
   };
 
+  const removeFromCart = (id) =>
+    setState({
+      ...state,
+      cart: state.cart.filter((cartItem) => cartItem.id !== id),
+    });
+
   return (
     <BooksContext.Provider
-      value={{ state: state, addToCart, increase, decrease }}
+      value={{ state: state, addToCart, increase, decrease, removeFromCart }}
     >
       <div className="App">
         <h1>
