@@ -12,14 +12,14 @@ const Products = (props) => {
         <Link to="/cart">My Cart</Link>
       </h2>
 
-      {context.map((book) => (
+      {context.state.bookList.map((book) => (
         <div className="book">
           <img src={book.image} alt={book.name} />
           <div>
             <h4>{book.name}</h4>
             <p>Author: {book.author}</p>
             <p>Price: &#8378; {book.price}</p>
-            <button>Add to Bag</button>
+            <button onClick={() => context.addToCart(book)}>Add to Bag</button>
           </div>
         </div>
       ))}
