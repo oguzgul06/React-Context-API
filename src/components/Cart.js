@@ -20,11 +20,11 @@ const Cart = () => {
             <h4>{book.name}</h4>
             <p>Author: {book.author}</p>
             <p>Price: &#8378;{book.price}</p>
-            <p>Total Price: &#8378;{book.price * book.count}</p>
+            <p>Total Price: &#8378;{(book.price * book.count).toFixed(2)}</p>
             <p>You have {book.count} books in the your cart</p>
-            <button>-</button>
+            <button onClick={() => context.decrease(book.id)}>-</button>
             <button>Out of the cart</button>
-            <button>+</button>
+            <button onClick={() => context.increase(book.id)}>+</button>
           </div>
         </div>
       ))}
