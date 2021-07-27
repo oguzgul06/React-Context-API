@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import "./styles.css";
 import { Route } from "react-router-dom";
 
@@ -7,18 +7,22 @@ import Cart from "./components/Cart";
 
 import { data } from "./data";
 
+export const BooksContext = createContext();
+
 export default function App() {
   return (
-    <div className="App">
-      <h1>
-        Shopping Cart
-        <img
-          src="https://avatars3.githubusercontent.com/u/60869810?v=4"
-          alt="React Dersleri"
-        />{" "}
-      </h1>
-      <Route exact path="/" component={Products} />
-      <Route path="/cart" component={Cart} />
-    </div>
+    <BooksContext.Provider value={data}>
+      <div className="App">
+        <h1>
+          Shopping Cart
+          <img
+            src="https://avatars3.githubusercontent.com/u/60869810?v=4"
+            alt="React Dersleri"
+          />{" "}
+        </h1>
+        <Route exact path="/" component={Products} />
+        <Route path="/cart" component={Cart} />
+      </div>
+    </BooksContext.Provider>
   );
 }

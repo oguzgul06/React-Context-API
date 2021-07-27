@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BooksContext } from "../App";
 
 const Products = (props) => {
+  const context = useContext(BooksContext);
+
   return (
     <div>
       <h2>
         <span>Book List</span>
         <Link to="/cart">My Cart</Link>
       </h2>
-      <div className="book">
+
+      {context.map((book) => (
+        <div className="book">
+          <img src={book.image} alt={book.name} />
+          <div>
+            <h4>{book.name}</h4>
+            <p>Author: {book.author}</p>
+            <p>Price: &#8378; {book.price}</p>
+            <button>Add to Bag</button>
+          </div>
+        </div>
+      ))}
+
+      {/* <div className="book">
         <img
           src="https://images-na.ssl-images-amazon.com/images/I/51eqjXwFzwL._SX344_BO1,204,203,200_.jpg"
           alt="Simyaci"
@@ -19,7 +35,7 @@ const Products = (props) => {
           <p>Fiyat: &#8378; 19.99</p>
           <button>Add to Bag</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
